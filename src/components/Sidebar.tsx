@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
-import { Cat, Clover, Film, Home, Menu, PlayCircle, Radio, Search, Star, Tv } from 'lucide-react';
+import { Cat, Clover, Film, Home, Menu, Radio, Search, Star, Tv } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
@@ -130,7 +130,6 @@ const Sidebar = ({ onToggle, activePath = '/' }: SidebarProps) => {
 
   const [menuItems, setMenuItems] = useState([
     { icon: Film, label: '电影', href: '/douban?type=movie' },
-    { icon: PlayCircle, label: '短剧', href: '/shortdrama' },
     { icon: Tv, label: '剧集', href: '/douban?type=tv' },
     { icon: Cat, label: '动漫', href: '/douban?type=anime' },
     { icon: Clover, label: '综艺', href: '/douban?type=show' },
@@ -225,8 +224,7 @@ const Sidebar = ({ onToggle, activePath = '/' }: SidebarProps) => {
                   const isActive =
                     decodedActive === decodedHref ||
                     (decodedActive.startsWith('/douban') &&
-                      decodedActive.includes(`type=${typeMatch}`)) ||
-                    (item.href === '/shortdrama' && decodedActive.startsWith('/shortdrama'));
+                      decodedActive.includes(`type=${typeMatch}`));
 
                   const Icon = item.icon;
                   return (
